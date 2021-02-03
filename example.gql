@@ -1,0 +1,44 @@
+query info {
+  info {
+    id
+    version
+    name
+    description
+  }
+}
+
+fragment AssetFragment on Asset {
+  id
+  rootId
+  parentExternalId
+  externalId
+  name
+  parentId
+  childCount
+  depth
+  path {
+    id
+  }
+  description
+  dataSetId
+  metadata {
+    id
+    value
+  }
+  source
+  labels
+  lastUpdatedTime
+  createdTime
+}
+
+query all_assets {
+  assets {
+    ...AssetFragment
+  }
+}
+
+query retrieve_assets {
+  retrieve(id: "702630644612") {
+    ...AssetFragment
+  }
+}
