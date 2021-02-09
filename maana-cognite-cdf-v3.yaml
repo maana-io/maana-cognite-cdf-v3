@@ -1,0 +1,42 @@
+# Template for single POD deployment and associated service/load balancer
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: "maana-cognite-cdf-v3"
+  spec:
+    type: LoadBalancer
+    ports:
+    - name: "8050"
+      port: 8050
+      targetPort: 8050
+    selector:
+      service: "maana-cognite-cdf-v3"
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      service: "maana-cognite-cdf-v3"
+    name: "maana-cognite-cdf-v3"
+  spec:
+    replicas: 1
+    strategy: {}
+    selector:
+      matchLabels:
+        service: "maana-cognite-cdf-v3"
+    template:
+      metadata:
+        labels:
+          service: "maana-cognite-cdf-v3"
+      spec:
+        containers:
+        - image: "services.azurecr.io/maana-cognite-cdf-v3:v1"
+          name: "maana-cognite-cdf-v3"
+          ports:
+          - containerPort: 8050
+          resources: {}
+        restartPolicy: Always
+kind: List
+metadata: {}
+

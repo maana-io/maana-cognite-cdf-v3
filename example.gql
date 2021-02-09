@@ -7,6 +7,45 @@ query info {
   }
 }
 
+fragment FileInfoFragment on FileInfo {
+      id
+    name
+    mimeType
+    externalId
+    assetIds
+    labels
+}
+
+query all_files {
+  fileInfos {
+    ... FileInfoFragment
+  }
+}
+query files_by_mimeType {
+  fileInfos(filter: { mimeType: "application/pdf" }) {
+    ... FileInfoFragment
+  }
+}
+
+query files_by_name {
+  fileInfos(filter: { name: "PH-ME-P-0156-001.pdf" }) {
+    ... FileInfoFragment
+  }
+}
+
+query files_by_assets {
+  fileInfos(filter: {assetIds:[8790823573167638, 853289072917784]}) {
+    ... FileInfoFragment    
+  }
+}
+
+query fileLinks {
+  fileLinks(ids: [{ id: 748012071562569 }]) {
+    id
+    url
+  }
+}
+
 fragment AssetFragment on Asset {
   id
   rootId

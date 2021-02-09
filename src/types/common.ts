@@ -49,3 +49,13 @@ export interface InternalId {
 }
 
 export type Label = ExternalId;
+
+export type FileName = string;
+
+export type FileMimeType = string;
+
+export interface FileLink {
+  downloadUrl: string;
+  id: number;
+  externalId?: string;
+}

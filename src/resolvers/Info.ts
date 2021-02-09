@@ -1,6 +1,6 @@
 import { Resolver, Query, ResolverInterface } from "type-graphql";
 import { environment } from "../environment";
-import { Info } from "../types/info";
+import { Info } from "../types/Info";
 
 @Resolver()
 export class InfoResolver {

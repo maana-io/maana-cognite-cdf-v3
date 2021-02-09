@@ -5,11 +5,13 @@ import { GraphQLError, GraphQLFormattedError } from "graphql";
 import { ApolloServer } from "apollo-server";
 import { environment } from "./environment";
 import pubSub from "./pubsub";
-import { InfoResolver } from "./resolvers/info";
+import { InfoResolver } from "./resolvers/Info";
 // --------------------------------
 // TODO: IMPORT YOUR RESOLVERS HERE
 // --------------------------------
-import { AssetResolver } from "./resolvers/asset";
+import { AssetResolver } from "./resolvers/Asset";
+import { FileInfoResolver } from "./resolvers/FileInfo";
+import { FileLinkResolver } from "./resolvers/FileLink";
 // --------------------------------
 
 export interface Context {}
@@ -23,6 +25,8 @@ const bootstrap = async () => {
       // TODO: ADD YOUR RESOLVERS HERE
       // -----------------------------
       AssetResolver,
+      FileInfoResolver,
+      FileLinkResolver,
       // -----------------------------
     ],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),

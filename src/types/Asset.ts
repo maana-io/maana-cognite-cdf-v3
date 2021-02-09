@@ -11,7 +11,7 @@ import {
 import { IdEither } from "./IdEither";
 import { Metadata } from "./Metadata";
 
-@ObjectType({ description: "A CDF Asset" })
+@ObjectType({ description: "CDF Asset" })
 export class Asset {
   /**
    * Cognite Asset
