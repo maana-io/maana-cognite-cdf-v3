@@ -31,7 +31,7 @@ items:
           service: "maana-cognite-cdf-v3"
       spec:
         containers:
-        - image: "services.azurecr.io/maana-cognite-cdf-v3:v1"
+        - image: "services.azurecr.io/maana-cognite-cdf-v3:v4"
           name: "maana-cognite-cdf-v3"
           ports:
           - containerPort: 8050

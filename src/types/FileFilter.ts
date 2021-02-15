@@ -15,7 +15,7 @@ export class FileFilterInput {
   // metadata?: Metadata;
 
   @Field(() => [Float], {
-    nullable: true,
+    nullable: "itemsAndList",
     description: "Only include files that reference these specific asset IDs.",
   })
   assetIds?: CogniteInternalId[];

@@ -35,7 +35,7 @@ export class Asset {
   depth?: number;
 
   @Field(() => [IdEither], {
-    nullable: true,
+    nullable: "itemsAndList",
     description: "IDs of assets on the path to the asset",
   })
   path?: IdEither[];
@@ -58,13 +58,13 @@ export class Asset {
   @Field(() => ID, { nullable: true, description: "" })
   dataSetId?: CogniteInternalId;
 
-  @Field(() => [Metadata], { nullable: true, description: "" })
+  @Field(() => [Metadata], { nullable: "itemsAndList", description: "" })
   metadata?: Metadata[];
 
   @Field({ nullable: true, description: "" })
   source?: AssetSource;
 
-  @Field(() => [ID], { nullable: true, description: "" })
+  @Field(() => [ID], { nullable: "itemsAndList", description: "" })
   labels?: CogniteExternalId[];
 
   /**

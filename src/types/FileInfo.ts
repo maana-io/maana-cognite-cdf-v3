@@ -33,10 +33,10 @@ export class FileInfo {
   @Field({ description: "The file's MIME type" })
   mimeType?: FileMimeType;
 
-  @Field(() => [Metadata], { nullable: true, description: "" })
+  @Field(() => [Metadata], { nullable: "itemsAndList", description: "" })
   metadata?: Metadata[];
 
-  @Field(() => [ID], { nullable: true, description: "" })
+  @Field(() => [ID], { nullable: "itemsAndList", description: "" })
   assetIds?: CogniteInternalId[];
 
   @Field(() => ID, { nullable: true, description: "" })
@@ -48,7 +48,7 @@ export class FileInfo {
 
   //   sourceModifiedTime?: Date;
 
-  @Field(() => [ID], { nullable: true, description: "" })
+  @Field(() => [ID], { nullable: "itemsAndList", description: "" })
   labels?: CogniteExternalId[];
 
   //   geoLocation?: FileGeoLocation;

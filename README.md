@@ -82,6 +82,13 @@ docker build . -t <my-service>
 docker run -p 8050:8050 <my-service>:latest
 ```
 
+Or use the scripts defined in `package.json`:
+
+```bash
+yarn docker-build
+yarn docker-run
+```
+
 ## Deploying the Service
 
 Once you have built and tested your service locally, you are ready to deploy it to a Kubernetes cluster for integration testing or production rollout.  This section covers the two officially supported options.

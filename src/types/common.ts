@@ -59,3 +59,8 @@ export interface FileLink {
   id: number;
   externalId?: string;
 }
+
+export type TimeseriesName = string;
+export type TimeseriesIsString = boolean;
+export type TimeseriesUnit = string;
+export type TimeseriesIsStep = boolean;

@@ -12,6 +12,7 @@ import { InfoResolver } from "./resolvers/Info";
 import { AssetResolver } from "./resolvers/Asset";
 import { FileInfoResolver } from "./resolvers/FileInfo";
 import { FileLinkResolver } from "./resolvers/FileLink";
+import { TimeseriesResolver } from "./resolvers/Timeseries";
 // --------------------------------
 
 export interface Context {}
@@ -27,6 +28,7 @@ const bootstrap = async () => {
       AssetResolver,
       FileInfoResolver,
       FileLinkResolver,
+      TimeseriesResolver
       // -----------------------------
     ],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),

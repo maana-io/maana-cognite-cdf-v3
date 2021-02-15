@@ -24,8 +24,7 @@ export class AssetResolver {
         const int = idEither as InternalId;
         const ext = idEither as ExternalId;
         return new IdEither({
-          id: int?.id || ext?.externalId,
-          internalId: int?.id,
+          id: int?.id,
           externalId: ext?.externalId,
         });
       }),
