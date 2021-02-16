@@ -12,7 +12,7 @@ import {
   CogniteInternalId,
 } from "./common";
 
-import { IdEitherInput } from "./IdEither";
+import { IdEitherAsInput } from "./IdEither";
 import { Metadata } from "./Metadata";
 
 @InputType({ description: "CDF AssetFilter" })
@@ -36,20 +36,20 @@ export class AssetFilter {
     nullable: "itemsAndList",
     description: "Return only the direct descendants of the specified assets.",
   })
-  rootIds?: IdEitherInput[];
+  rootIds?: IdEitherAsInput[];
 
   @Field(() => [ID], {
     nullable: "itemsAndList",
     description: "Only include assets that reference these specific dataSet IDs",
   })
-  dataSetIds?: IdEitherInput[];
+  dataSetIds?: IdEitherAsInput[];
 
   @Field(() => [ID], {
     nullable: "itemsAndList",
     description:
       "Only include timeseries that are related to an asset in a subtree rooted at any of these assetIds.  If the total size of the given subtrees exceeds 100,000 assets, an error will be returned.",
   })
-  assetSubtreeIds?: IdEitherInput[];
+  assetSubtreeIds?: IdEitherAsInput[];
   //   /**
   //    * Return only the assets matching the specified label constraints.
   //    */

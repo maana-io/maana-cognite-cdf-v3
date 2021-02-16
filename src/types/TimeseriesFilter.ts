@@ -13,7 +13,7 @@ import {
   CogniteInternalId,
 } from "./common";
 
-import { IdEitherInput } from "./IdEither";
+import { IdEitherAsInput } from "./IdEither";
 import { Metadata } from "./Metadata";
 
 @InputType({ description: "CDF TimeseriesFilter" })
@@ -40,12 +40,12 @@ export class TimeseriesFilter {
   rootAssetIds?: CogniteInternalId[];
 
   @Field(() => [ID], { nullable: "itemsAndList", description: "" })
-  dataSetIds?: IdEitherInput[];
+  dataSetIds?: IdEitherAsInput[];
 
-  @Field(() => [IdEitherInput], {
+  @Field(() => [IdEitherAsInput], {
     nullable: "itemsAndList",
     description:
       "Only include timeseries that are related to an asset in a subtree rooted at any of these assetIds.  If the total size of the given subtrees exceeds 100,000 assets, an error will be returned.",
   })
-  assetSubtreeIds?: IdEitherInput[];
+  assetSubtreeIds?: IdEitherAsInput[];
 }

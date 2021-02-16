@@ -1,5 +1,5 @@
 import { Field, InputType, ObjectType, ID, Float } from "type-graphql";
-import { Timestamp, TimestampInput } from "./Timestamp";
+import { Timestamp, TimestampAsInput } from "./Timestamp";
 
 @ObjectType({ description: "Either a string or a timestamp" })
 export class StringOrTimestamp {
@@ -27,7 +27,7 @@ export class StringOrTimestamp {
 }
 
 @InputType({ description: "Either a string or a timestamp" })
-export class StringOrTimestampInput {
+export class StringOrTimestampAsInput {
   @Field(() => ID, {
     nullable: true,
     description: "Either the string value or the string value of the timestamp",
@@ -37,7 +37,7 @@ export class StringOrTimestampInput {
   @Field({ nullable: true, description: "String value" })
   string?: string;
 
-  @Field(() => TimestampInput, { nullable: true, description: "Timestamp value" })
+  @Field(() => TimestampAsInput, { nullable: true, description: "Timestamp value" })
   timestamp?: Timestamp;
 
   constructor(value: string | Timestamp) {

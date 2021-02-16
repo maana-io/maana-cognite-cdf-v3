@@ -14,7 +14,7 @@ import {
 
 import { TimeseriesFilter } from "./TimeseriesFilter";
 
-import { IdEitherInput } from "./IdEither";
+import { IdEitherAsInput } from "./IdEither";
 import { Metadata } from "./Metadata";
 
 @InputType({ description: "CDF TimeseriesFilterQuery" })

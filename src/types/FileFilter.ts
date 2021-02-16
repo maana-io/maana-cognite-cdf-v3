@@ -2,7 +2,7 @@ import { Field, InputType, Float } from "type-graphql";
 
 import { FileMimeType, FileName, CogniteInternalId } from "./common";
 @InputType({ description: "CDF FileFilter (as input)" })
-export class FileFilterInput {
+export class FileFilterAsInput {
   @Field({ nullable: true, description: "" })
   name?: FileName;
 

@@ -79,7 +79,7 @@ query all_assets {
 }
 
 query asset_name_filter {
-  assets(scope: { filter: { name: "23-TI-96137-01" } }) {
+  assets(scope: { filter: { name: "23-TT-92539" } }) {
     ...AssetFragment
   }
 }
@@ -117,7 +117,7 @@ query all_timeseries {
 
 query timeseries_for_asset {
   timeseries(
-    scope: { filter: { assetSubtreeIds: [{ id: 6687602007296940 }] } }
+    scope: { filter: { assetIds: [6079953337268935] } }
   ) {
     ...TimeseriesFragment
   }
@@ -182,7 +182,7 @@ query datapoints_aggregates {
 }
 
 query datapoints {
-  datapoints(filter: { items: [{ id: 6190956317771 }] }) {
+  datapoints(filter: { items: [{ id: 643849686863640 }] }) {
     datapoints {
       id
       externalId

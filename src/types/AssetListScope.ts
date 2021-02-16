@@ -14,7 +14,7 @@ import {
 
 import { AssetFilter } from "../types/AssetFilter";
 
-import { IdEitherInput } from "./IdEither";
+import { IdEitherAsInput } from "./IdEither";
 import { Metadata } from "./Metadata";
 
 @InputType({ description: "CDF AssetListScope" })

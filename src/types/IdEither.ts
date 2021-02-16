@@ -18,7 +18,7 @@ export class IdEither {
 }
 
 @InputType({ description: "A CDF identity reference (as input)" })
-export class IdEitherInput {
+export class IdEitherAsInput {
   @Field(() => ID, { nullable: true, description: "Required ID" })
   id: string | number;
 

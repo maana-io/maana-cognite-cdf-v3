@@ -23,7 +23,7 @@ export class Timestamp {
 }
 
 @InputType({ description: "Either a number or a date" })
-export class TimestampInput {
+export class TimestampAsInput {
   @Field(() => ID, { nullable: true, description: "Either the number or string value of the date" })
   id: number;
 

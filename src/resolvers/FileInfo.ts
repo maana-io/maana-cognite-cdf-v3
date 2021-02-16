@@ -3,7 +3,7 @@ import { FileInfo as CogniteFileInfo } from "@cognite/sdk";
 import { Cognite } from "../cogniteClient";
 import { InternalId, ExternalId } from "../types/common";
 import { FileInfo } from "../types/FileInfo";
-import { FileFilterInput } from "../types/FileFilter";
+import { FileFilterAsInput } from "../types/FileFilter";
 import { IdEither } from "../types/IdEither";
 
 @Resolver(() => FileInfo)
@@ -37,7 +37,7 @@ export class FileInfoResolver {
    */
   @Query(() => [FileInfo], { description: "Get all the files" })
   async fileInfos(
-    @Arg("filter", () => FileFilterInput, { nullable: true }) filter: FileFilterInput
+    @Arg("filter", () => FileFilterAsInput, { nullable: true }) filter: FileFilterAsInput
   ): Promise<FileInfo[]> {
     const fileInfos: FileInfo[] = [];
     // const files = await client.files.list({ filter: { mimeType: 'image/png' } });
