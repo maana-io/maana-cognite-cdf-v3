@@ -61,7 +61,7 @@ export class Timeseries {
     this.isString = props.isString;
     this.metadata = props.metadata;
     this.unit = props.unit;
-    this.assetId = props.dataSetId;
+    this.assetId = props.assetId;
     this.dataSetId = props.dataSetId;
     this.isStep = props.isStep;
     this.description = props.description;

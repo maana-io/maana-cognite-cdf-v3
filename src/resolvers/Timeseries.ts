@@ -4,6 +4,7 @@ import { Cognite } from "../cogniteClient";
 import { InternalId, ExternalId } from "../types/common";
 import { Timeseries } from "../types/Timeseries";
 import { IdEither } from "../types/IdEither";
+import { TimeseriesFilterQuery } from "../types/TimeseriesFilterQuery";
 
 @Resolver(() => Timeseries)
 export class TimeseriesResolver {
@@ -35,9 +36,11 @@ export class TimeseriesResolver {
    * All timeseries
    */
   @Query(() => [Timeseries], { description: "Get all the timeseries" })
-  async timeseries(): Promise<Timeseries[]> {
+  async timeseries(
+    @Arg("scope", () => TimeseriesFilterQuery, { nullable: true }) scope: TimeseriesFilterQuery
+  ): Promise<Timeseries[]> {
     const ts: Timeseries[] = [];
-    for await (const timeseries of Cognite.client.timeseries.list()) {
+    for await (const timeseries of Cognite.client.timeseries.list(scope)) {
       ts.push(this.mk_timeseries(timeseries));
     }
     return ts;

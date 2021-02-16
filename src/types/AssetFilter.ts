@@ -43,17 +43,20 @@ export class AssetFilter {
     description: "Only include assets that reference these specific dataSet IDs",
   })
   dataSetIds?: IdEitherInput[];
-  //   /**
-  //    * Only include assets in subtrees rooted at the specified assets.
-  //    * If the total size of the given subtrees exceeds 100,000 assets, an error will be returned.
-  //    */
-  //   assetSubtreeIds?: IdEither[];
+
+  @Field(() => [ID], {
+    nullable: "itemsAndList",
+    description:
+      "Only include timeseries that are related to an asset in a subtree rooted at any of these assetIds.  If the total size of the given subtrees exceeds 100,000 assets, an error will be returned.",
+  })
+  assetSubtreeIds?: IdEitherInput[];
   //   /**
   //    * Return only the assets matching the specified label constraints.
   //    */
   // labels?: LabelFilter;
   // metadata?: Metadata;
-  // source?: AssetSource;
+  @Field({ nullable: true, description: "" })
+  source?: AssetSource;
   // createdTime?: DateRange;
   // lastUpdatedTime?: DateRange;
 

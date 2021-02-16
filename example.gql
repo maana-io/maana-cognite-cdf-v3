@@ -84,14 +84,8 @@ query asset_name_filter {
   }
 }
 
-query asset_limit {
-  assets(scope: { limit: 2 }) {
-    ...AssetFragment
-  }
-}
-
 query retrieve_assets {
-  retrieve(id: "702630644612") {
+  retrieve(id: "6687602007296940") {
     ...AssetFragment
   }
 }
@@ -117,6 +111,14 @@ fragment TimeseriesFragment on Timeseries {
 
 query all_timeseries {
   timeseries {
+    ...TimeseriesFragment
+  }
+}
+
+query timeseries_for_asset {
+  timeseries(
+    scope: { filter: { assetSubtreeIds: [{ id: 6687602007296940 }] } }
+  ) {
     ...TimeseriesFragment
   }
 }
