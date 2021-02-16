@@ -1,7 +1,5 @@
 import { Field, ObjectType, ID } from "type-graphql";
-import {
-  DatapointAggregates as CDFDatapointAggregates,
-} from "@cognite/sdk";
+import { DatapointAggregates as CDFDatapointAggregates } from "@cognite/sdk";
 
 import { CogniteExternalId } from "./common";
 
@@ -35,6 +33,6 @@ export class DatapointAggregates {
     this.isString = props.isString;
     this.unit = props.unit;
     this.isStep = props.isStep;
-    this.datapoints = props.datapoints.map(x => new DatapointAggregate(x));
+    this.datapoints = props.datapoints.map((x) => new DatapointAggregate(x));
   }
 }

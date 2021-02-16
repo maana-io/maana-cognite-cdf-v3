@@ -6,7 +6,7 @@ import {
 import { Field, ObjectType, ID } from "type-graphql";
 import { DatapointAggregates } from "./DatapointAggregates";
 import { Datapoints } from "./Datapoints";
-import { aggregates } from "./AggregateEnum"
+import { aggregates } from "./AggregateEnum";
 
 @ObjectType({ description: "CDF Datapoints Collection" })
 export class DatapointsUnion {
@@ -20,19 +20,19 @@ export class DatapointsUnion {
   datapoints?: Datapoints[];
 
   private isAggregate(items: CDFDatapointAggregates[]): boolean {
-    const dp = items[0].datapoints[0]
-    return aggregates.some(x => x in dp)
+    const dp = items[0].datapoints[0];
+    return aggregates.some((x) => x in dp);
   }
 
   constructor(results: CDFDatapointAggregates[] | CDFDatapoints[]) {
-    const dpa = results as CDFDatapointAggregates[]
+    const dpa = results as CDFDatapointAggregates[];
     if (this.isAggregate(dpa)) {
-      this.id = "DatapointAggregates"
-      this.datapointAggregates = dpa.map(x => new DatapointAggregates(x))
+      this.id = "DatapointAggregates";
+      this.datapointAggregates = dpa.map((x) => new DatapointAggregates(x));
     } else {
-      const dp = results as CDFDatapoints[]
-      this.id = "Datapoints"
-      this.datapoints = dp.map(x => new Datapoints(x))
+      const dp = results as CDFDatapoints[];
+      this.id = "Datapoints";
+      this.datapoints = dp.map((x) => new Datapoints(x));
     }
   }
 }

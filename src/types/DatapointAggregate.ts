@@ -1,8 +1,6 @@
 import { Field, ObjectType, ID, InputType, Float } from "type-graphql";
 
-import {
-  DatapointAggregate as CDFDatapointAggregate,
-} from "@cognite/sdk";
+import { DatapointAggregate as CDFDatapointAggregate } from "@cognite/sdk";
 
 @ObjectType({ description: "CDF DatapointAggregate" })
 export class DatapointAggregate {

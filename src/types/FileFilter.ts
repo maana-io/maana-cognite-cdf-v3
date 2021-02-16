@@ -1,10 +1,6 @@
-import { Field, InputType, ObjectType, ID, Float } from "type-graphql";
+import { Field, InputType, Float } from "type-graphql";
 
-import { FileMimeType, FileName, CogniteExternalId, CogniteInternalId } from "./common";
-
-import { IdEither } from "./IdEither";
-import { Metadata } from "./Metadata";
-
+import { FileMimeType, FileName, CogniteInternalId } from "./common";
 @InputType({ description: "CDF FileFilter (as input)" })
 export class FileFilterInput {
   @Field({ nullable: true, description: "" })

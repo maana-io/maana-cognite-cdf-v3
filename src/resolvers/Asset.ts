@@ -3,6 +3,7 @@ import { Asset as CDFAsset } from "@cognite/sdk";
 import { Cognite } from "../cogniteClient";
 import { InternalId, ExternalId } from "../types/common";
 import { Asset } from "../types/Asset";
+import { AssetListScope } from "../types/AssetListScope";
 import { IdEither } from "../types/IdEither";
 
 @Resolver(() => Asset)
@@ -38,9 +39,11 @@ export class AssetResolver {
   }
 
   @Query(() => [Asset], { description: "Get all the assets" })
-  async assets(): Promise<Asset[]> {
+  async assets(
+    @Arg("scope", () => AssetListScope, { nullable: true }) scope: AssetListScope
+  ): Promise<Asset[]> {
     const assets: Asset[] = [];
-    for await (const asset of Cognite.client.assets.list()) {
+    for await (const asset of Cognite.client.assets.list(scope)) {
       assets.push(this.mk_asset(asset));
     }
     return assets;

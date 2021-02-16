@@ -46,13 +46,13 @@ export class DatapointsQuery {
 
   constructor(props: DatapointsQuery) {
     if (props) {
-      this.id = props.id
-      this.limit = props.limit
-      this.start = props.start
-      this.end = props.end
-      this.aggregates = props.aggregates
-      this.granularity = props.granularity
-      this.includeOutsidePoints = props.includeOutsidePoints
+      this.id = props.id;
+      this.limit = props.limit;
+      this.start = props.start;
+      this.end = props.end;
+      this.aggregates = props.aggregates;
+      this.granularity = props.granularity;
+      this.includeOutsidePoints = props.includeOutsidePoints;
     }
   }
 }

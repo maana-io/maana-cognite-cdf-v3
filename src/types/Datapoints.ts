@@ -2,7 +2,7 @@ import { Field, ObjectType, ID } from "type-graphql";
 import {
   Datapoints as CDFDatapoints,
   StringDatapoints as CDFStringDatapoints,
-  DoubleDatapoints as CDFDoubleDatapoints
+  DoubleDatapoints as CDFDoubleDatapoints,
 } from "@cognite/sdk";
 
 import { CogniteExternalId } from "./common";
@@ -34,12 +34,14 @@ export class Datapoints {
 
   //-------------------------------------------------------------------------
 
-  isDoubleDatapoints(results: CDFStringDatapoints | CDFDoubleDatapoints): results is CDFDoubleDatapoints {
+  isDoubleDatapoints(
+    results: CDFStringDatapoints | CDFDoubleDatapoints
+  ): results is CDFDoubleDatapoints {
     return !(results as CDFDoubleDatapoints).isString;
   }
 
   constructor(results: CDFDatapoints) {
-  this.id = results.id;
+    this.id = results.id;
     this.externalId = results.externalId;
     this.isString = results.isString;
     this.unit = results.unit;

@@ -78,6 +78,18 @@ query all_assets {
   }
 }
 
+query asset_name_filter {
+  assets(scope: { filter: { name: "23-TI-96137-01" } }) {
+    ...AssetFragment
+  }
+}
+
+query asset_limit {
+  assets(scope: { limit: 2 }) {
+    ...AssetFragment
+  }
+}
+
 query retrieve_assets {
   retrieve(id: "702630644612") {
     ...AssetFragment
