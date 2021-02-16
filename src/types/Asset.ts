@@ -13,9 +13,6 @@ import { Metadata } from "./Metadata";
 
 @ObjectType({ description: "CDF Asset" })
 export class Asset {
-  /**
-   * Cognite Asset
-   */
   @Field(() => ID, { description: "The unique identifier of the asset" })
   id: string | number;
 
@@ -25,9 +22,6 @@ export class Asset {
   @Field(() => ID, { nullable: true, description: "The parent's externalId if defined" })
   parentExternalId?: CogniteExternalId;
 
-  /**
-   * Aggregated metrics of the asset
-   */
   @Field({ nullable: true, description: "Number of direct descendants for the asset" })
   childCount?: number;
 
@@ -40,9 +34,6 @@ export class Asset {
   })
   path?: IdEither[];
 
-  /**
-   * ExternalAsset
-   */
   @Field(() => ID, { nullable: true, description: "" })
   externalId?: CogniteExternalId;
 
@@ -67,9 +58,6 @@ export class Asset {
   @Field(() => [ID], { nullable: "itemsAndList", description: "" })
   labels?: CogniteExternalId[];
 
-  /**
-   * CreatedAndLastUpdatedTime
-   */
   @Field({ description: "" })
   lastUpdatedTime: Date;
 
@@ -79,15 +67,12 @@ export class Asset {
   //-------------------------------------------------------------------------
 
   constructor(props: Asset) {
-    // Asset
     this.id = props.id;
     this.rootId = props.rootId;
     this.parentExternalId = props.parentExternalId;
-    // AggregateResults
     this.childCount = props.childCount;
     this.depth = props.depth;
     this.path = props.path;
-    // ExternalAsset
     this.externalId = props.externalId;
     this.name = props.name;
     this.parentId = props.parentId;
@@ -96,7 +81,6 @@ export class Asset {
     this.metadata = props.metadata;
     this.source = props.source;
     this.labels = props.labels;
-    // CreatedAndLastUpdatedTime
     this.lastUpdatedTime = props.lastUpdatedTime;
     this.createdTime = props.createdTime;
   }

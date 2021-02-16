@@ -8,34 +8,36 @@ query info {
 }
 
 fragment FileInfoFragment on FileInfo {
-      id
-    name
-    mimeType
-    externalId
-    assetIds
-    labels
+  id
+  name
+  mimeType
+  externalId
+  assetIds
+  labels
 }
 
 query all_files {
   fileInfos {
-    ... FileInfoFragment
+    ...FileInfoFragment
   }
 }
 query files_by_mimeType {
   fileInfos(filter: { mimeType: "application/pdf" }) {
-    ... FileInfoFragment
+    ...FileInfoFragment
   }
 }
 
 query files_by_name {
   fileInfos(filter: { name: "PH-ME-P-0156-001.pdf" }) {
-    ... FileInfoFragment
+    ...FileInfoFragment
   }
 }
 
 query files_by_assets {
-  fileInfos(filter: {assetIds:[8790823573167638, 853289072917784]}) {
-    ... FileInfoFragment    
+  fileInfos(
+    filter: { assetIds: [702630644612, 8790823573167638, 853289072917784] }
+  ) {
+    ...FileInfoFragment
   }
 }
 
@@ -79,5 +81,108 @@ query all_assets {
 query retrieve_assets {
   retrieve(id: "702630644612") {
     ...AssetFragment
+  }
+}
+
+fragment TimeseriesFragment on Timeseries {
+  id
+  externalId
+  name
+  isString
+  metadata {
+    id
+    value
+  }
+  unit
+  assetId
+  dataSetId
+  isStep
+  description
+  securityCategories
+  lastUpdatedTime
+  createdTime
+}
+
+query all_timeseries {
+  timeseries {
+    ...TimeseriesFragment
+  }
+}
+
+query all_aggregates {
+  aggregates {
+    id
+  }
+}
+
+fragment DatapointAggregateFragment on DatapointAggregate {
+  id
+  timestamp
+  average
+  max
+  min
+  count
+  sum
+  interpolation
+  stepInterpolation
+  totalVariation
+  continuousVariance
+  discreteVariance
+}
+
+query datapoints_aggregates {
+  datapoints(
+    filter: {
+      items: [
+        {
+          externalId: "pi:160031"
+          aggregates: [
+            "average"
+            "max"
+            "min"
+            "count"
+            "sum"
+            "interpolation"
+            "stepInterpolation"
+            "totalVariation"
+            "continuousVariance"
+            "discreteVariance"
+          ]
+          granularity: "m"
+        }
+      ]
+    }
+  ) {
+    id
+    datapointAggregates {
+      id
+      externalId
+      isStep
+      isString
+      unit
+      datapoints {
+        ...DatapointAggregateFragment
+      }
+    }
+  }
+}
+
+query datapoints {
+  datapoints(filter: { items: [{ id: 6190956317771 }] }) {
+    datapoints {
+      id
+      externalId
+      isStep
+      isString
+      unit
+      doubleDatapoints {
+        timestamp
+        value
+      }
+      stringDatapoints {
+        timestamp
+        value
+      }
+    }
   }
 }

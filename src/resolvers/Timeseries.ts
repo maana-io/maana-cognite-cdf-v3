@@ -36,7 +36,7 @@ export class TimeseriesResolver {
    */
   @Query(() => [Timeseries], { description: "Get all the timeseries" })
   async timeseries(): Promise<Timeseries[]> {
-    const ts: Timeseries[] = []
+    const ts: Timeseries[] = [];
     for await (const timeseries of Cognite.client.timeseries.list()) {
       ts.push(this.mk_timeseries(timeseries));
     }

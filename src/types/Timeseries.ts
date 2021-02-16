@@ -1,4 +1,4 @@
-import { Field, ObjectType, ID, Int} from "type-graphql";
+import { Field, ObjectType, ID, Int } from "type-graphql";
 
 import {
   TimeseriesName,
@@ -13,9 +13,6 @@ import { Metadata } from "./Metadata";
 
 @ObjectType({ description: "CDF Timeseries" })
 export class Timeseries {
-  /**
-   * Cognite Timeseries
-   */
   @Field(() => ID, { description: "The unique identifier of the timeseries" })
   id: string | number;
 
@@ -49,9 +46,6 @@ export class Timeseries {
   @Field(() => [Int], { nullable: true, description: "" })
   securityCategories?: number[];
 
-  /**
-   * CreatedAndLastUpdatedTime
-   */
   @Field({ description: "" })
   lastUpdatedTime: Date;
 
@@ -72,7 +66,6 @@ export class Timeseries {
     this.isStep = props.isStep;
     this.description = props.description;
     this.securityCategories = props.securityCategories;
-    // CreatedAndLastUpdatedTime
     this.lastUpdatedTime = props.lastUpdatedTime;
     this.createdTime = props.createdTime;
   }
